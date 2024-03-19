@@ -6,7 +6,7 @@ class Reptil(Animal):
   iguanas = 0
   serpientes = 0
 
-  def __init__(self, nombre="", edad=0, habitat="", genero="", colorEscamas="", largoCola=0):
+  def __init__(self, nombre, edad, habitat, genero, colorEscamas, largoCola):
     super().__init__(nombre, edad, habitat, genero)
     self._colorEscamas = colorEscamas
     self._largoCola = largoCola
@@ -15,35 +15,28 @@ class Reptil(Animal):
   def getColorEscamas(self):
     return self._colorEscamas
 
-  def setColorEscamas(self, nuevasEscamas):
-    self._colorEscamas = nuevasEscamas
+  def setColorEscamas(self, colorEscamas):
+    self._colorEscamas = colorEscamas
 
   def getLargoCola(self):
     return self._largoCola
 
-  def setLargoCola(self, nuevoLargo):
-    self._largoCola = nuevoLargo
-
-  def getListado(self):
-    return Reptil._listado
+  def setLargoCola(self, largoCola):
+    self._largoCola = largoCola
   
-  def movimiento(self):
+  def movimiento():
     return "reptar"
   
-  @classmethod
-  def cantidadReptiles(cls):
-    contador = 0
-    for reptil in cls._listado:
-      if (isinstance(reptil, Reptil)):
-        contador += 1
-    return contador 
-
+  @staticmethod
+  def cantidadReptiles():
+    return len(Reptil._listado)
+  
   @classmethod
   def crearIguana(cls, nombre, edad, genero):
-    cls.iguanas += 1
     Reptil(nombre, edad, "humedal", genero, "verde", 3)
+    cls.iguanas += 1
 
   @classmethod
   def crearSerpiente(cls, nombre, edad, genero):
-    cls.serpientes += 1
     Reptil(nombre, edad, "jungla", genero, "blanco", 3)
+    cls.serpientes += 1

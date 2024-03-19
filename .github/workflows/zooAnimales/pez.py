@@ -5,7 +5,7 @@ class Pez(Animal):
   salmones = 0
   bacalaos = 0
 
-  def __init__(self, nombre="", edad=0, habitat="", genero="", colorEscamas="",cantidadAletas=0):
+  def __init__(self, nombre, edad, habitat, genero, colorEscamas,cantidadAletas):
     super().__init__(nombre, edad, habitat, genero)
     self._colorEscamas = colorEscamas
     self._cantidadAletas = cantidadAletas
@@ -14,35 +14,28 @@ class Pez(Animal):
   def getColorEscamas(self):
     return self._colorEscamas
 
-  def setColorEscamas(self, nuevasEscamas):
-    self._colorEscamas = nuevasEscamas
+  def setColorEscamas(self, colorEscamas):
+    self._colorEscamas = colorEscamas
 
   def getCantidadAletas(self):
     return self._cantidadAletas
 
-  def setCantidadAletas(self, nuevasAletas):
-    self._cantidadAletas = nuevasAletas
-
-  def getListado(self):
-    return Pez._listado
+  def setCantidadAletas(self, cantidadAletas):
+    self._cantidadAletas = cantidadAletas
   
-  def movimiento(self):
+  def movimiento():
     return "nadar"
-
-  @classmethod
-  def cantidadPeces(cls):
-    contador = 0
-    for pez in cls._listado:
-      if (isinstance(pez, Pez)):
-        contador += 1
-    return contador
+  
+  @staticmethod
+  def cantidadPeces():
+        return len(Pez._listado)  
 
   @classmethod
   def crearSalmon(cls, nombre, edad, genero):
-    cls.salmones += 1
     Pez(nombre, edad, "oceano", genero, "rojo", 6)
+    cls.salmones += 1
 
   @classmethod
   def crearBacalao(cls, nombre, edad, genero):
-    cls.bacalaos += 1
     Pez(nombre, edad, "oceano", genero, "gris", 6)
+    cls.bacalaos += 1
